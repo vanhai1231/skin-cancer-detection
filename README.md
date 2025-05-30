@@ -9,8 +9,7 @@ Dự án này nhằm mục đích phát triển mô hình Deep Learning dựa tr
 ```
 skin-cancer-detection/
 ├── data/                            # Thư mục chứa dữ liệu (nếu có)
-├── model/
-│   └── skin_cancer_model.h5        # Mô hình đã huấn luyện lưu dưới dạng HDF5
+├── model/                          # Thư mục trống, vì model được lưu ngoài GitHub
 ├── results/                         # Kết quả và biểu đồ trực quan
 │   ├── confusion_matrix.png
 │   ├── data_distribution.png
@@ -58,9 +57,22 @@ jupyter notebook skin-cancer-detection.ipynb
 
 ---
 
-## 🔎 Tổng quan quy trình mô hình CNN
+## Mô hình đã huấn luyện
 
-### 1. SỬ DỤNG MÔ HÌNH CNN
+File mô hình `.h5` đã được huấn luyện sẵn và upload tại Hugging Face:
+
+[Tải mô hình tại đây](https://huggingface.co/vanhai123/skin_cancer_detection)
+
+> Cách nạp lại mô hình:
+
+```python
+from tensorflow.keras.models import load_model
+model = load_model("path_to_downloaded_model.h5")
+```
+
+---
+
+## 🔎 Tổng quan quy trình mô hình CNN
 
 * Import các thư viện cần thiết
 * Kiểm tra GPU
@@ -68,25 +80,18 @@ jupyter notebook skin-cancer-detection.ipynb
 * Hàm vẽ biểu đồ
 * Hàm tạo & huấn luyện mô hình
 * Nạp & resize toàn bộ ảnh
-* Đường dẫn
-* Tạo DataFrame
-* Tạo `label_map`
-* Giới hạn mỗi lớp
-* Resize song song
-* Loại bỏ các ảnh lỗi
-* Chia dữ liệu
+* Tạo DataFrame và `label_map`
+* Resize song song, loại ảnh lỗi
+* Phân chia train/val/test
 * Data Augmentation
-* Tóm tắt & trực quan dữ liệu
-* Chuẩn bị train/val/test
-* Giải phóng bộ nhớ
+* Trực quan hóa dữ liệu
 * Huấn luyện mô hình
-* Đánh giá trên tập Test
-* Vẽ đường cong Precision–Recall
-* Lưu mô hình & dự đoán một số mẫu
+* Đánh giá: accuracy, loss, confusion matrix, PR-curve
+* Lưu mô hình & dự đoán mẫu
 
 ---
 
-## Kết quả mô hình
+## 📊 Kết quả mô hình
 
 * **Mean AUC**: 0.99
 * **Accuracy (Tập test)**: 92%
