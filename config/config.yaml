@@ -1,0 +1,19 @@
+data:
+  train_dir: "/skin-cancer9-classesisic/Skin cancer ISIC The International Skin Imaging Collaboration/Train"
+  test_dir: "/skin-cancer9-classesisic/Skin cancer ISIC The International Skin Imaging Collaboration/Test"
+  max_per_class: 2000
+  image_size: [128, 128]
+  batch_size: 32
+model:
+  input_shape: [128, 128, 3]
+  num_classes: 9
+  learning_rate: 0.001
+  momentum: 0.9
+training:
+  epochs: 25
+  patience_lr: 3
+  factor_lr: 0.5
+  min_lr: 0.00001
+  patience_early_stopping: 5
+output:
+  output_dir: "output"
